@@ -2,7 +2,7 @@ import os
 
 from sqlmodel import Session, create_engine
 
-sqlite_file_name = "database.db"
+sqlite_file_name = os.path.join(os.path.dirname(__file__), "..", "..", "database.db")
 sqlite_url = f"sqlite:///{os.path.abspath(sqlite_file_name)}"
 
 connect_args = {"check_same_thread": False}

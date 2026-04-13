@@ -1,6 +1,6 @@
-# API de Encomendas
+# Projeto Encomendas
 
-API REST para cadastro e gerenciamento de produtos e encomendas.
+Monorepo para gestão de produtos e encomendas.
 
 > **Status:** Backend em desenvolvimento ativo. Frontend em planejamento.
 
@@ -8,80 +8,50 @@ API REST para cadastro e gerenciamento de produtos e encomendas.
 
 - **Backend:** FastAPI + SQLModel + Alembic
 - **Banco:** SQLite (produção futura: PostgreSQL)
+- **Frontend:** Em desenvolvimento (stack a definir)
 - **Gerenciador:** uv
 
-## Funcionalidades
+## Estrutura
 
-- Cadastro de produtos
-- Gestão de encomendas com itens
-- Snapshot de preços no momento da encomenda
+```
+projeto-encomendas/
+├── backend/          # API REST (FastAPI)
+├── frontend/         # Frontend (a definir)
+├── README.md         # Este arquivo
+└── .gitignore
+```
 
 ## Começando
 
-### Pré-requisitos
-
-- Python 3.12+
-
-### Instalação
+### Backend
 
 ```bash
+cd backend
+
 # Instalar dependências
 uv sync
 
-# Aplicar migrações do banco de dados
+# Aplicar migrações
 uv run alembic upgrade head
-```
 
-### Rodar em desenvolvimento
-
-```bash
+# Rodar em desenvolvimento
 uv run uvicorn app.main:app --reload --port 8000
 ```
 
+### Frontend
+
+Em desenvolvimento...
+
 ## Documentação da API
 
-Após iniciar o servidor, acesse:
+Após iniciar o servidor, akses:
 
 - **Swagger UI:** http://localhost:8000/docs
 - **OpenAPI:** http://localhost:8000/openapi.json
 
-## Estrutura do Projeto
-
-```
-app/
-├── database.py    # Configuração do banco
-├── main.py        # Aplicação FastAPI
-├── models/        # Modelos SQLModel
-├── routers/       # Endpoints da API
-└── schemas/       # Schemas Pydantic
-alembic/
-└── versions/      # Migrações do banco de dados
-```
-
-## Endpoints
-
-### Produtos
-
-| Método | Rota              | Descrição                |
-|--------|-------------------|--------------------------|
-| POST   | `/produtos/`      | Cadastrar produto        |
-| GET    | `/produtos/`      | Listar todos os produtos |
-| GET    | `/produtos/{id}`  | Buscar produto por ID    |
-| PUT    | `/produtos/{id}`  | Atualizar produto        |
-| DELETE | `/produtos/{id}`  | Remover produto          |
-
-### Encomendas
-
-| Método | Rota                  | Descrição                  |
-|--------|-----------------------|----------------------------|
-| POST   | `/encomendas/`        | Cadastrar encomenda        |
-| GET    | `/encomendas/`        | Listar todas as encomendas |
-| GET    | `/encomendas/{id}`    | Buscar encomenda por ID    |
-| PUT    | `/encomendas/{id}`    | Atualizar encomenda        |
-| DELETE | `/encomendas/{id}`    | Remover encomenda          |
-
 ## Roadmap
 
+- [x] Backend API REST
 - [ ] Frontend (stack a definir)
 - [ ] Migração SQLite → PostgreSQL
 - [ ] Autenticação
